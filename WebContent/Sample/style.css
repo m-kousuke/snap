@@ -1,0 +1,20 @@
+/* navbar 全体の背景色とボーダーカラー */
+.navbar-default {
+	background-color: #05CCC6;
+	border-color: #05CCC6;
+}
+
+/* navbar テキストカラー */
+.navbar-default .navbar-nav>li>a {
+	color: #ffffff;
+}
+
+/* navbar テキストカラー */
+.navbar-default .navbar-nav>li {
+	color: #ffffff;
+}
+
+/* navbar テキストカラー */
+.navbar-header .navbar-brand {
+	color: #ffffff;
+}

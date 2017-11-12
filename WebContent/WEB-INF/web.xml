@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+	<display-name>snap</display-name>
+	<welcome-file-list>
+		<welcome-file>/Public/student/index.jsp</welcome-file>
+	</welcome-file-list>
+
+	<!-- 学習者側 -->
+	<servlet>
+		<servlet-name>LoginStudentServlet</servlet-name>
+		<servlet-class>servlet.LoginStudentServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LoginStudentServlet</servlet-name>
+		<url-pattern>/Public/student/LoginStudentServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>LogoutStudentServlet</servlet-name>
+		<servlet-class>servlet.LogoutStudentServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LogoutStudentServlet</servlet-name>
+		<url-pattern>/Public/student/LogoutStudentServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>RecieveResponseDataBySelfAssessmentStudentServlet</servlet-name>
+		<servlet-class>servlet.RecieveResponseDataBySelfAssessmentStudentServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RecieveResponseDataBySelfAssessmentStudentServlet</servlet-name>
+		<url-pattern>/Public/student/RecieveResponseDataBySelfAssessmentStudentServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>RecieveResponseDataByPeerAssessmentStudentServlet</servlet-name>
+		<servlet-class>servlet.RecieveResponseDataByPeerAssessmentStudentServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RecieveResponseDataByPeerAssessmentStudentServlet</servlet-name>
+		<url-pattern>/Public/student/RecieveResponseDataByPeerAssessmentStudentServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>SearchLessonStudentServlet</servlet-name>
+		<servlet-class>servlet.SearchLessonStudentServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SearchLessonStudentServlet</servlet-name>
+		<url-pattern>/Public/student/SearchLessonStudentServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>SearchRubricStudentServlet</servlet-name>
+		<servlet-class>servlet.SearchRubricStudentServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SearchRubricStudentServlet</servlet-name>
+		<url-pattern>/Public/student/SearchRubricStudentServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>UploadFileStudentServlet</servlet-name>
+		<servlet-class>servlet.UploadFileStudentServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UploadFileStudentServlet</servlet-name>
+		<url-pattern>/Public/student/UploadFileStudentServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>DeleteFileStudentServlet</servlet-name>
+		<servlet-class>servlet.DeleteFileStudentServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DeleteFileStudentServlet</servlet-name>
+		<url-pattern>/Public/student/DeleteFileStudentServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>SearchRubricForSelfStudentServlet</servlet-name>
+		<servlet-class>servlet.SearchRubricForSelfStudentServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SearchRubricForSelfStudentServlet</servlet-name>
+		<url-pattern>/Public/student/SearchRubricForSelfStudentServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>SearchStudentForPeerStudentServlet</servlet-name>
+		<servlet-class>servlet.SearchStudentForPeerStudentServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SearchStudentForPeerStudentServlet</servlet-name>
+		<url-pattern>/Public/student/SearchStudentForPeerStudentServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>GoPeerAssessmentStudentServlet</servlet-name>
+		<servlet-class>servlet.GoPeerAssessmentStudentServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GoPeerAssessmentStudentServlet</servlet-name>
+		<url-pattern>/Public/student/GoPeerAssessmentStudentServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>GoCheckPeerAssessmentStudentServlet</servlet-name>
+		<servlet-class>servlet.GoCheckPeerAssessmentStudentServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GoCheckPeerAssessmentStudentServlet</servlet-name>
+		<url-pattern>/Public/student/GoCheckPeerAssessmentStudentServlet</url-pattern>
+	</servlet-mapping>
+
+	<!-- ここから教員側 -->
+	<servlet>
+		<servlet-name>LoginTeacherServlet</servlet-name>
+		<servlet-class>servlet.LoginTeacherServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LoginTeacherServlet</servlet-name>
+		<url-pattern>/Public/teacher/LoginTeacherServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>LogoutTeacherServlet</servlet-name>
+		<servlet-class>servlet.LogoutTeacherServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LogoutTeacherServlet</servlet-name>
+		<url-pattern>/Public/teacher/LogoutTeacherServlet</url-pattern>
+	</servlet-mapping>
+
+</web-app>
