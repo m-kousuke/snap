@@ -155,4 +155,63 @@ public class StudentDAO extends DriverAccessor {
 		}
 	}
 
+	public int receiveAccountId(String studentId) {
+
+		Connection con = null;
+		con = createConnection();
+		try {
+			String sql = "select * from students where student_id ='" + studentId + "'";
+
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			rs.next();
+
+			int accountId = rs.getInt("id");
+
+			stmt.close();
+			rs.close();
+			closeConnection(con);
+
+			return accountId;
+
+		} catch (
+
+		SQLException e)
+
+		{
+			e.printStackTrace();
+			return 0;
+		} finally {
+		}
+	}
+
+	public int receiveSubjectAccountId(String subjectStudentId) {
+
+		Connection con = null;
+		con = createConnection();
+		try {
+			String sql = "select * from students where student_id ='" + subjectStudentId + "'";
+
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			rs.next();
+
+			int subjectAccountId = rs.getInt("id");
+
+			stmt.close();
+			rs.close();
+			closeConnection(con);
+
+			return subjectAccountId;
+
+		} catch (
+
+		SQLException e)
+
+		{
+			e.printStackTrace();
+			return 0;
+		} finally {
+		}
+	}
 }

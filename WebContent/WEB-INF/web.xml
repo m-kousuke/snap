@@ -135,5 +135,13 @@
 		<servlet-name>LogoutTeacherServlet</servlet-name>
 		<url-pattern>/Public/teacher/LogoutTeacherServlet</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>SearchLessonTeacherServlet</servlet-name>
+		<servlet-class>servlet.SearchLessonTeacherServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SearchLessonTeacherServlet</servlet-name>
+		<url-pattern>/Public/teacher/SearchLessonTeacherServlet</url-pattern>
+	</servlet-mapping>
 
 </web-app>

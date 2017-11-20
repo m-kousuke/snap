@@ -34,8 +34,9 @@ public class UploadFileStudentServlet extends HttpServlet {
 		int lessonId = (int) session.getAttribute("lessonId");
 
 		// (1)アップロードファイルを格納するPATHを取得(OSによって変化する)
-		String path = ("C:/Users/J14-8002/pleiades/workspace/snap/WebContent/Public/LearningFile");
+		//String path = ("C:/Users/J14-8002/pleiades/workspace/snap/WebContent/Public/LearningFile");
 		//String path = ("/usr/share/tomcat/webapps/snap/Public/LearningFile");
+		String path = ("/Applications/Eclipse_4.6.3.app/Contents/workspace/snap/WebContent/Public/LearningFile");
 
 		// (2)ServletFileUploadオブジェクトを生成
 		DiskFileItemFactory factory = new DiskFileItemFactory();

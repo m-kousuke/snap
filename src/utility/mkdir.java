@@ -12,7 +12,7 @@ public class mkdir {
 		StudentDAO studentDAO = new StudentDAO();
 		ArrayList<Student> studentList = new ArrayList<Student>();
 		studentList = studentDAO.searchStudent();
-		String path = "C:/Users/J14-8002/pleiades/workspace/snap/WebContent/Public/LearningFile/";
+		String path = "/Applications/Eclipse_4.6.3.app/Contents/workspace/snap/WebContent/Public/LearningFile/";
 		/*
 		 * OSによってpathは変化する(下のpathはCentOSの場合)
 		 * String path = "usr/share/tomcat/webapps/snap/Public/LearningFile/";

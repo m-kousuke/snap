@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import beans.LearningFile;
 import dao.AssessmentDAO;
 import dao.LearningFileDAO;
+import dao.StudentDAO;
 
 public class RecieveResponseDataByPeerAssessmentStudentServlet extends HttpServlet {
 
@@ -41,11 +42,24 @@ public class RecieveResponseDataByPeerAssessmentStudentServlet extends HttpServl
 		fileList = fileDAO.searchFileForRubric(subjectStudentId, lessonId);
 		request.setAttribute("fileList", fileList);
 
+		//studentIdとsubjectStudentIdの通し番号を取得
+		StudentDAO studentDAO = new StudentDAO();
+		int accountId = studentDAO.receiveAccountId(studentId);
+		int subjectAccountId = studentDAO.receiveSubjectAccountId(subjectStudentId);
+
+
+
+
 		/*
 		 * subjectStudentIdとstudentIdとlessonIdで相互評価の記録をDBに登録
 		 */
 		AssessmentDAO assessmentDAO = new AssessmentDAO();
 		assessmentDAO.registResponseDataByPeerAssessment(studentId, subjectStudentId, responseDataList, lessonId);
+
+		/*
+		 * accountIdとsubjectAcountIdでネットワーク分析のためのデータを登録
+		 */
+		assessmentDAO.registDataForAnalysis(accountId, subjectAccountId, lessonId);
 
 		/*
 		 * subjectStudentIdとstudentIdとlessonIdで相互評価の結果をDBから引っ張ってくる

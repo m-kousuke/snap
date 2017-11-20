@@ -337,4 +337,41 @@ public class AssessmentDAO extends DriverAccessor {
 		return null;
 	}
 
+	//ネットワーク分析のためのデータ登録
+	public void registDataForAnalysis(int accountId, int subjectAccountId,int lessonId) {
+		Connection con = null;
+		con = createConnection();
+		try {
+			/*
+			 * 重複登録を避けるためのプログラム(これを取れば重み付きの分析ができる
+			 */
+			String searchSql = "select count(*) from peer_assessment where account_id = '" + accountId
+					+ "' AND subject_account_id='" + subjectAccountId + "' AND lesson_id =" + lessonId;
+
+			Statement checkStmt = con.createStatement();
+			ResultSet rs = checkStmt.executeQuery(searchSql);
+			rs.next();
+			// rs.getInt(1)で行数の確認ができるのでその値をkに代入
+			int k = rs.getInt(1);
+			checkStmt.close();
+			rs.close();
+			if (k == 0) {
+
+				String sql = "insert into peer_assesment(lesson_id,account_id,subject_id) values(?,?,?,?)";
+				PreparedStatement stmt = con.prepareStatement(sql);
+
+				stmt.setInt(1, lessonId);
+				stmt.setInt(2,accountId);
+				stmt.setInt(3, subjectAccountId);
+
+				stmt.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+		} finally {
+		}
+
+	}
+
 }
