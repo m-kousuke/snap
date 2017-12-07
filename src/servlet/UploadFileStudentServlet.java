@@ -31,11 +31,13 @@ public class UploadFileStudentServlet extends HttpServlet {
 
 		HttpSession session = request.getSession(true);
 		String studentId = (String) session.getAttribute("studentId");
+		//String studentName = (String) session.getAttribute("studentName");
 		int lessonId = (int) session.getAttribute("lessonId");
 
 		// (1)アップロードファイルを格納するPATHを取得(OSによって変化する)
-		//String path = ("C:/Users/J14-8002/pleiades/workspace/snap/WebContent/Public/LearningFile");
-		//String path = ("/usr/share/tomcat/webapps/snap/Public/LearningFile");
+		// String path =
+		// ("C:/Users/J14-8002/pleiades/workspace/snap/WebContent/Public/LearningFile");
+		// String path = ("/usr/share/tomcat/webapps/snap/Public/LearningFile");
 		String path = ("/Applications/Eclipse_4.6.3.app/Contents/workspace/snap/WebContent/Public/LearningFile");
 
 		// (2)ServletFileUploadオブジェクトを生成
@@ -92,14 +94,14 @@ public class UploadFileStudentServlet extends HttpServlet {
 		}
 
 		/*
-		 * studentIdとlessonIdで学習記録データをDBあら引っ張ってくる
+		 * studentIdとlessonIdで学習記録データをDBから引っ張ってくる
 		 */
 		LearningFileDAO fileDAO = new LearningFileDAO();
 		ArrayList<LearningFile> fileList = new ArrayList<LearningFile>();
 		fileList = fileDAO.searchFileForRubric(studentId, lessonId);
 		request.setAttribute("fileList", fileList);
 
-		getServletContext().getRequestDispatcher("/Public/student/rubric" + lessonId+ ".jsp")
-				.forward(request, response);
+		getServletContext().getRequestDispatcher("/Public/student/rubric" + lessonId + ".jsp").forward(request,
+				response);
 	}
 }

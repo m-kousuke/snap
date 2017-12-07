@@ -1,82 +1,69 @@
 package beans;
 
-public class Message{
+public class Message {
 
-	private int id=0;
-	private int lesson_id = 0;
-	private String student_id =null;
-	private int message = 0;
+	private int id = 0;
+	private int lessonId = 0;
+	private int studentId = 0;
+	private int messageId = 0;
 	private int membership = 0;
 	private int rock = 0;
 
-	public Message(int id,int lesson_id,String student_id,int message,int membership,int rock){
+	public Message(int id, int lessonId, int studentId, int messageId, int membership, int rock) {
 		this.id = id;
-		this.lesson_id = lesson_id;
-		this.student_id = student_id;
-		this.message = message;
+		this.lessonId = lessonId;
+		this.studentId = studentId;
+		this.messageId = messageId;
 		this.membership = membership;
 		this.rock = rock;
 	}
 
-
-	public Message(){
+	public Message() {
 	}
-
 
 	public int getId() {
 		return id;
 	}
 
-
 	public void setId(int id) {
 		this.id = id;
 	}
 
-
-	public int getLesson_id() {
-		return lesson_id;
+	public int getLessonId() {
+		return lessonId;
 	}
 
-
-	public void setLesson_id(int lesson_id) {
-		this.lesson_id = lesson_id;
+	public void setLessonId(int lessonId) {
+		this.lessonId = lessonId;
 	}
 
-
-	public String getStudent_id() {
-		return student_id;
+	public int getStudentId() {
+		return studentId;
 	}
 
-
-	public void setStudent_id(String student_id) {
-		this.student_id = student_id;
+	public void setStudentId(int studentId) {
+		this.studentId = studentId;
 	}
 
-
-	public int getMessage() {
-		return message;
+	public int getMessageId() {
+		return messageId;
 	}
 
-
-	public void setMessage(int message) {
-		this.message = message;
+	public void setMessageId(int messageId) {
+		this.messageId = messageId;
 	}
-
 
 	public int getMembership() {
 		return membership;
 	}
 
-
 	public void setMembership(int membership) {
 		this.membership = membership;
 	}
 
-
 	public int getRock() {
 		return rock;
 	}
-
 
 	public void setRock(int rock) {
 		this.rock = rock;

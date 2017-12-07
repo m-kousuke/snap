@@ -135,6 +135,7 @@
 		<servlet-name>LogoutTeacherServlet</servlet-name>
 		<url-pattern>/Public/teacher/LogoutTeacherServlet</url-pattern>
 	</servlet-mapping>
+
 	<servlet>
 		<servlet-name>SearchLessonTeacherServlet</servlet-name>
 		<servlet-class>servlet.SearchLessonTeacherServlet</servlet-class>
@@ -144,4 +145,21 @@
 		<url-pattern>/Public/teacher/SearchLessonTeacherServlet</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>GoFacilitationForStudentServlet</servlet-name>
+		<servlet-class>servlet.GoFacilitationForStudentServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GoFacilitationForStudentServlet</servlet-name>
+		<url-pattern>/Public/teacher/GoFacilitationForStudentServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>SearchMessageStudentServlet</servlet-name>
+		<servlet-class>SearchMessageStudentServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SearchMessageStudentServlet</servlet-name>
+		<url-pattern>/Public/teacher/SearchMessageStudentServlet</url-pattern>
+	</servlet-mapping>
 </web-app>

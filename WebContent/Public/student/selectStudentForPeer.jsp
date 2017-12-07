@@ -62,7 +62,7 @@
 									for (int i = 0; i < studentList.size(); i++) {
 										out.println("<label>");
 										out.println("<input type='radio' required name='subjectStudentId' value="
-												+ studentList.get(i).getStudentId() + ">");
+												+ studentList.get(i).getId() + ">");
 										out.println(studentList.get(i).getStudentName());
 										out.println("</label>");
 										out.println("&nbsp;&nbsp;&nbsp;");
@@ -95,7 +95,7 @@
 									for (int i = 0; i < studentPeerList.size(); i++) {
 										out.println("<label>");
 										out.println("<input type='radio' required name='subjectStudentId' value="
-												+ studentPeerList.get(i).getStudentId() + ">");
+												+ studentPeerList.get(i).getId() + ">");
 										out.println(studentPeerList.get(i).getStudentName());
 										out.println("</label>");
 										out.println("&nbsp;&nbsp;&nbsp;");

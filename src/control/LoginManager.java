@@ -13,11 +13,11 @@ public class LoginManager {
 			int checkId = 0;
 			return checkId;
 
-		} else if (student.getStudentId().equals(studentId) && student.getPassword().equals(password)) {
+		} else if (student.getId() == Integer.parseInt(studentId) && student.getPassword().equals(password)) {
 			int checkId = 1;
 			return checkId;
 
-		} else if (!student.getStudentId().equals(studentId) || !student.getPassword().equals(password)) {
+		} else if (!(student.getId() == Integer.parseInt(studentId)) || !student.getPassword().equals(password)) {
 			int checkId = 0;
 			return checkId;
 		}

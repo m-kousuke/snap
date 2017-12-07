@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%
-	session.setAttribute("lessonId", Integer.parseInt(request.getParameter("lessonId")));
-	System.out.println(session.getAttribute("lessonId"));
+	session.setAttribute("lessonId", request.getParameter("lessonId"));
 %>
 <!DOCTYPE html>
 <html>
@@ -25,9 +24,7 @@
 
 
 	<p align="center">
-		<a href="GoFacilitationForStudentServlet"> <font size="+2">
-				ファシリテーションを実行する </font>
-		</a>
+		<font size="+2"> メッセージを送りました！！ </font>
 	</p>
 
 

@@ -17,17 +17,14 @@ public class StudentDAO extends DriverAccessor {
 
 		Connection con = null;
 		con = createConnection();
-
 		try {
-			String sql = "select * from students where student_id ='" + studentId + "' AND password ='" + password
-					+ "'";
+			String sql = "select * from students where id ='" + studentId + "' AND password ='" + password + "'";
 
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 			rs.next();
 
-			Student student = new Student(rs.getInt("id"), rs.getString("student_id"), rs.getString("password"),
-					rs.getString("student_name"));
+			Student student = new Student(rs.getInt("id"), rs.getString("password"), rs.getString("student_name"));
 
 			stmt.close();
 			rs.close();
@@ -61,8 +58,7 @@ public class StudentDAO extends DriverAccessor {
 
 			ArrayList<Student> studentList = new ArrayList<Student>();
 			while (rs.next()) {
-				Student student = new Student(rs.getInt("id"), rs.getString("student_id"), rs.getString("password"),
-						rs.getString("student_name"));
+				Student student = new Student(rs.getInt("id"), rs.getString("password"), rs.getString("student_name"));
 				studentList.add(student);
 			}
 
@@ -91,15 +87,14 @@ public class StudentDAO extends DriverAccessor {
 		con = createConnection();
 
 		try {
-			String sql = "select * from students where student_id !='" + studentId + "'";
+			String sql = "select * from students where id !='" + studentId + "'";
 
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 
 			ArrayList<Student> studentList = new ArrayList<Student>();
 			while (rs.next()) {
-				Student student = new Student(rs.getInt("id"), rs.getString("student_id"), rs.getString("password"),
-						rs.getString("student_name"));
+				Student student = new Student(rs.getInt("id"), rs.getString("password"), rs.getString("student_name"));
 				studentList.add(student);
 			}
 
@@ -128,7 +123,7 @@ public class StudentDAO extends DriverAccessor {
 		con = createConnection();
 
 		try {
-			String sql = "select student_name from students where student_id = '" + studentId + "'";
+			String sql = "select student_name from students where id = '" + studentId + "'";
 
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
@@ -155,63 +150,4 @@ public class StudentDAO extends DriverAccessor {
 		}
 	}
 
-	public int receiveAccountId(String studentId) {
-
-		Connection con = null;
-		con = createConnection();
-		try {
-			String sql = "select * from students where student_id ='" + studentId + "'";
-
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(sql);
-			rs.next();
-
-			int accountId = rs.getInt("id");
-
-			stmt.close();
-			rs.close();
-			closeConnection(con);
-
-			return accountId;
-
-		} catch (
-
-		SQLException e)
-
-		{
-			e.printStackTrace();
-			return 0;
-		} finally {
-		}
-	}
-
-	public int receiveSubjectAccountId(String subjectStudentId) {
-
-		Connection con = null;
-		con = createConnection();
-		try {
-			String sql = "select * from students where student_id ='" + subjectStudentId + "'";
-
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(sql);
-			rs.next();
-
-			int subjectAccountId = rs.getInt("id");
-
-			stmt.close();
-			rs.close();
-			closeConnection(con);
-
-			return subjectAccountId;
-
-		} catch (
-
-		SQLException e)
-
-		{
-			e.printStackTrace();
-			return 0;
-		} finally {
-		}
-	}
 }

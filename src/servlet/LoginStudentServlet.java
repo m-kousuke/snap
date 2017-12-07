@@ -45,7 +45,9 @@ public class LoginStudentServlet extends HttpServlet {
 			session.setAttribute("studentId", studentId);
 			session.setAttribute("studentName", student.getStudentName());
 			session.setAttribute("password", password);
-			getServletContext().getRequestDispatcher("/Public/student/topPage.jsp").forward(request, response);
+
+			getServletContext().getRequestDispatcher("SearchMessageStudentServlet").forward(request, response);
+			//getServletContext().getRequestDispatcher("/Public/student/topPage.jsp").forward(request, response);
 		}
 	}
 }

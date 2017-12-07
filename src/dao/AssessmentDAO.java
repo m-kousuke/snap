@@ -267,12 +267,11 @@ public class AssessmentDAO extends DriverAccessor {
 			 */
 			ArrayList<Student> studentList = new ArrayList<Student>();
 			for (int i = 0; i < studentIdList.size(); i++) {
-				String sql = "select * from students where student_id = '" + studentIdList.get(i) + "'";
+				String sql = "select * from students where id = '" + studentIdList.get(i) + "'";
 				Statement stmt = con.createStatement();
 				ResultSet rs = stmt.executeQuery(sql);
 				rs.next();
-				Student student = new Student(rs.getInt("id"), rs.getString("student_id"), null,
-						rs.getString("student_name"));
+				Student student = new Student(rs.getInt("id"), null, rs.getString("student_name"));
 				studentList.add(student);
 				stmt.close();
 				rs.close();
@@ -314,12 +313,11 @@ public class AssessmentDAO extends DriverAccessor {
 			 */
 			ArrayList<Student> studentList = new ArrayList<Student>();
 			for (int i = 0; i < studentIdList.size(); i++) {
-				String sql = "select * from students where student_id = '" + studentIdList.get(i) + "'";
+				String sql = "select * from students where id = '" + studentIdList.get(i) + "'";
 				Statement stmt = con.createStatement();
 				ResultSet rs = stmt.executeQuery(sql);
 				rs.next();
-				Student student = new Student(rs.getInt("id"), rs.getString("student_id"), null,
-						rs.getString("student_name"));
+				Student student = new Student(rs.getInt("id"), null, rs.getString("student_name"));
 				studentList.add(student);
 				stmt.close();
 				rs.close();
@@ -337,40 +335,36 @@ public class AssessmentDAO extends DriverAccessor {
 		return null;
 	}
 
-	//ネットワーク分析のためのデータ登録
-	public void registDataForAnalysis(int accountId, int subjectAccountId,int lessonId) {
-		Connection con = null;
-		con = createConnection();
+	// ネットワーク分析のためのデータ
+	public ArrayList<ArrayList<String>> responseDataForNetworkAnalysis(int lessonId) {
+
+
+		Connection connection = null;
+		connection = createConnection();
+
+
+
 		try {
-			/*
-			 * 重複登録を避けるためのプログラム(これを取れば重み付きの分析ができる
-			 */
-			String searchSql = "select count(*) from peer_assessment where account_id = '" + accountId
-					+ "' AND subject_account_id='" + subjectAccountId + "' AND lesson_id =" + lessonId;
-
-			Statement checkStmt = con.createStatement();
-			ResultSet rs = checkStmt.executeQuery(searchSql);
-			rs.next();
-			// rs.getInt(1)で行数の確認ができるのでその値をkに代入
-			int k = rs.getInt(1);
-			checkStmt.close();
-			rs.close();
-			if (k == 0) {
-
-				String sql = "insert into peer_assesment(lesson_id,account_id,subject_id) values(?,?,?,?)";
-				PreparedStatement stmt = con.prepareStatement(sql);
-
-				stmt.setInt(1, lessonId);
-				stmt.setInt(2,accountId);
-				stmt.setInt(3, subjectAccountId);
-
-				stmt.close();
+			String sql = "select distinct student_id,subject_student_id from response_data_peer_assessment where lesson_id ='"
+					+ lessonId + "'" + "order by student_id,subject_student_id";
+			Statement stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			ArrayList<ArrayList<String>> peerAssessmentList = new ArrayList<ArrayList<String>>();
+			while (rs.next()) {
+				ArrayList<String> list = new ArrayList<String>();
+				list.add(rs.getString("student_id"));
+				list.add(rs.getString("subject_student_id"));
+				peerAssessmentList.add(list);
 			}
+
+			return peerAssessmentList;
+
 		} catch (SQLException e) {
 			e.printStackTrace();
-
 		} finally {
 		}
+
+		return null;
 
 	}
 
