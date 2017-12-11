@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -8,8 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import beans.Message;
+import beans.MessageText;
 import beans.Student;
 import control.LoginManager;
+import control.SelectMessageManager;
+import dao.MessageDAO;
 import dao.StudentDAO;
 
 public class LoginStudentServlet extends HttpServlet {
@@ -45,9 +50,16 @@ public class LoginStudentServlet extends HttpServlet {
 			session.setAttribute("studentId", studentId);
 			session.setAttribute("studentName", student.getStudentName());
 			session.setAttribute("password", password);
-
-			getServletContext().getRequestDispatcher("SearchMessageStudentServlet").forward(request, response);
-			//getServletContext().getRequestDispatcher("/Public/student/topPage.jsp").forward(request, response);
+			MessageDAO messageDAO = new MessageDAO();
+			ArrayList<Message> messageList = messageDAO.searchMessageDAO(studentId);
+			System.out.println(messageList);
+			ArrayList<MessageText> messageTextList = messageDAO.receiveMessageText(messageList);
+			System.out.println(messageTextList);
+			SelectMessageManager selectMessageManager = new SelectMessageManager();
+			ArrayList<String> selectMessageList = selectMessageManager.selectMessageList(messageList, messageTextList);
+			System.out.println(selectMessageList);
+			request.setAttribute("selectMessageList", selectMessageList);
+			getServletContext().getRequestDispatcher("/Public/student/topPage.jsp").forward(request, response);
 		}
 	}
 }

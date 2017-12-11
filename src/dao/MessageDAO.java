@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import beans.Message;
+import beans.MessageText;
 import utility.DriverAccessor;
 
 public class MessageDAO extends DriverAccessor {
@@ -40,9 +41,8 @@ public class MessageDAO extends DriverAccessor {
 
 		Connection con = null;
 		con = createConnection();
-
 		try {
-			String sql = "select * from messages where student_id ='" + studentId + "'and rock ='" + 0 + "'";
+			String sql = "select * from messages where student_id ='" + studentId + "'and rock = 0 ";
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 
@@ -51,6 +51,7 @@ public class MessageDAO extends DriverAccessor {
 			while (rs.next()) {
 				Message message = new Message(rs.getInt("id"), rs.getInt("lesson_id"), rs.getInt("student_id"),
 						rs.getInt("message_id"), rs.getInt("membership"), rs.getInt("rock"));
+				messageList.add(message);
 			}
 			stmt.close();
 			rs.close();
@@ -61,5 +62,30 @@ public class MessageDAO extends DriverAccessor {
 			return null;
 		} finally {
 		}
+	}
+
+	public ArrayList<MessageText> receiveMessageText(ArrayList<Message> messageList) {
+		// TODO 自動生成されたメソッド・スタブ
+
+		Connection con = null;
+		con = createConnection();
+
+		try {
+			String sql = "select * from messages_text";
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			ArrayList<MessageText> messageTextList = new ArrayList<MessageText>();
+
+			while (rs.next()) {
+				MessageText messageText = new MessageText(rs.getInt("id"), rs.getString("message"));
+				messageTextList.add(messageText);
+			}
+			return messageTextList;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+		}
+
 	}
 }

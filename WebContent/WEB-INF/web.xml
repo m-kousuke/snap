@@ -117,6 +117,15 @@
 		<url-pattern>/Public/student/GoCheckPeerAssessmentStudentServlet</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>SearchMessageStudentServlet</servlet-name>
+		<servlet-class>servlet.SearchMessageStudentServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SearchMessageStudentServlet</servlet-name>
+		<url-pattern>/Public/student/SearchMessageStudentServlet</url-pattern>
+	</servlet-mapping>
+
 	<!-- ここから教員側 -->
 	<servlet>
 		<servlet-name>LoginTeacherServlet</servlet-name>
